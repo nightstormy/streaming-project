@@ -3,15 +3,21 @@
 namespace App\Http\Livewire\Channel;
 
 use App\Models\Channel;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\Redirector;
 use Illuminate\Http\RedirectResponse;
 
+/**
+ * @method authorize(string $string, mixed $channel)
+ */
 class EditChannel extends Component
 {
+    use AuthorizesRequests;
     public mixed $channel;
 
     /**
@@ -47,9 +53,11 @@ class EditChannel extends Component
 
     /**
      * @return RedirectResponse|Redirector
+     * @throws AuthorizationException
      */
-    public function update() : RedirectResponse|Redirector
+    public function update(): RedirectResponse|Redirector
     {
+        $this->authorize('update', $this->channel);
         $this->validate();
 
         $this->channel->update([
