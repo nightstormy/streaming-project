@@ -80,9 +80,10 @@ class EditChannel extends Component
             /* resize and convert to png */
             $img = Image::make(storage_path() . '/app/' . $image)
                 ->encode('png')
-                ->fit(80, 600, function ($constraint) {
+                ->fit(80, 80, function ($constraint) {
                     $constraint->upsize();
-                });
+                })
+                ->save();
 
 
             //update file path

@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property mixed $user_id
  */
-class Channel extends Model
+class Video extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'channels';
+    protected $table = 'videos';
     protected $guarded = [];
 
     /**
@@ -25,12 +25,17 @@ class Channel extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
-        'name',
-        'slug',
-        'uid',
+        'channel_id',
+        'title',
         'description',
-        'image'
+        'uid',
+        'path',
+        'processed_file',
+        'visibility',
+        'processed',
+        'allow_likes',
+        'allow_comments',
+        'processing_percentage'
     ];
 
     protected array $dates = [
@@ -40,35 +45,24 @@ class Channel extends Model
     ];
 
     protected $casts = [
-        'user_id' => 'integer',
-        'name' => 'string',
-        'slug' => 'string',
-        'uid' => 'string',
+        'channel_id' => 'integer',
+        'title' => 'string',
         'description' => 'string',
-        'image' => 'string'
+        'uid' => 'string',
+        'path' => 'string',
+        'processed_file' => 'string',
+        'visibility' => 'string',
+        'processed' => 'boolean',
+        'allow_likes' => 'boolean',
+        'allow_comments' => 'boolean',
+        'processing_percentage' => 'string'
     ];
-
-    /**
-     * @return string
-     */
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
 
     /**
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function channel(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    /**
-     * @return HasMany
-     */
-    public function videos(): HasMany
-    {
-        return $this->hasMany(Video::class);
+        return $this->belongsTo(Channel::class);
     }
 }

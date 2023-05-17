@@ -1,4 +1,7 @@
 <div xmlns:wire="http://www.w3.org/1999/xhtml">
+    @if($channel->image)
+        <img src="{{asset('images' . '/' . $channel->image)}}" alt="'">
+    @endif
     <form wire:submit.prevent="update">
 
         {{--Name Input--}}
