@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" wire:model="channel.slug">
             </label>
         </div>
-        @error('channel.name')
+        @error('channel.slug')
         <div class="alert alert-danger">
             {{ $message }}
         </div>
@@ -34,7 +34,26 @@
                 <textarea cols="30" rows="4" class="form-control" wire:model="channel.description"></textarea>
             </label>
         </div>
-        @error('channel.name')
+        @error('channel.description')
+        <div class="alert alert-danger">
+            {{ $message }}
+        </div>
+        @enderror
+
+        {{--image Input--}}
+        <div class="form-group mb-4">
+            <label for="image">
+                Image
+                <input type="file" class="form-control" wire:model="image">
+            </label>
+        </div>
+        <div class="form-group">
+            @if($image)
+                Image Preview
+                <img class="img-thumbnail" src="{{ $image->temporaryUrl() }}" alt="">
+            @endif
+        </div>
+        @error('image')
         <div class="alert alert-danger">
             {{ $message }}
         </div>
