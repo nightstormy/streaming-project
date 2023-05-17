@@ -16,8 +16,12 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    @stack('custom-css')
     {{--Materializecss--}}
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {{--custom-css--}}
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -40,10 +44,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     @auth
-                    <li class="nav-item">
-                        <a href="{{route('video.all', ['channel' => Auth::user()->channel])}}" class="nav-link">All Videos</a>
-                    </li>
-                        @endauth
+                        <li class="nav-item">
+                            <a href="{{route('video.all', ['channel' => Auth::user()->channel])}}" class="nav-link">All
+                                Videos</a>
+                        </li>
+                    @endauth
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -100,6 +105,7 @@
         @yield('content')
     </main>
 </div>
+@stack('scripts')
 @livewireScripts
 </body>
 </html>
