@@ -4,6 +4,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Livewire\Video\AllVideo;
 use App\Http\Livewire\Video\CreateVideo;
 use App\Http\Livewire\Video\EditVideo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

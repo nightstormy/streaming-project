@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('channel_id')->nullable();;
-            $table->string('title')->nullable();;
-            $table->text('description')->nullable();;
-            $table->string('uid')->nullable();;
+            $table->unsignedBigInteger('channel_id')->nullable();
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('uid')->nullable();
+            $table->string('thumbnail_image')->nullable();
             $table->text('path')->nullable();
             $table->string('processed_file')->nullable();
             $table->enum('visibility', ['private', 'public', 'unlisted'])->default('private');

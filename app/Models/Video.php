@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed $user_id
  * @property mixed $uid
  * @property mixed $path
+ * @property mixed $thumbnail_image
  */
 class Video extends Model
 {
@@ -30,6 +31,7 @@ class Video extends Model
         'title',
         'description',
         'uid',
+        'thumbnail_image',
         'path',
         'processed_file',
         'visibility',
@@ -50,6 +52,7 @@ class Video extends Model
         'title' => 'string',
         'description' => 'string',
         'uid' => 'string',
+        'thumbnail_image' => 'string',
         'path' => 'string',
         'processed_file' => 'string',
         'visibility' => 'string',
@@ -58,6 +61,14 @@ class Video extends Model
         'allow_comments' => 'boolean',
         'processing_percentage' => 'string'
     ];
+
+    public function getThumbnailAttribute(){
+        if($this->thumbnail_image){
+            return '/videos/' . $this->uid . '/' . $this->thumbnail_image;
+        }else{
+            return '/videos/' . 'default.png';
+        }
+    }
 
     /**
      * @return string

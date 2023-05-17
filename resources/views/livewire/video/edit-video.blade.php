@@ -4,6 +4,19 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-thumbnail" src="{{ asset($this->video->thumbnail) }}" alt="">
+                    </div>
+
+                    <div class="col-md-8">
+                        <p>processing ({{$this->video->processing_percentage}})</p>
+                    </div>
+
+                </div>
+
+
                 <form wire:submit.prevent="update">
 
                     {{--Title Input--}}
