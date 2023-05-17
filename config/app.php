@@ -168,7 +168,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+        ProtoneMedia\LaravelFFMpeg\Support\ServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,7 +184,8 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'FFMpeg' => ProtoneMedia\LaravelFFMpeg\Support\FFMpeg::class
     ])->toArray(),
 
 ];

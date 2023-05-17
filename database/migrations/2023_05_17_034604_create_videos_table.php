@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('uid')->nullable();;
             $table->text('path')->nullable();
             $table->string('processed_file')->nullable();
-            $table->enum('visibility', ['private', 'public', 'unslited'])->default('private');
+            $table->enum('visibility', ['private', 'public', 'unlisted'])->default('private');
 
             $table->boolean('processed')->default(false);
             $table->boolean('allow_likes')->default(false);
