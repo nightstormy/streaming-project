@@ -30,10 +30,7 @@ class AllVideo extends Component
             ->extends('layouts.app');
     }
 
-    /**
-     * @throws AuthorizationException
-     */
-    public function delete(Video $video): RedirectResponse
+    public function delete(Video $video)
     {
         //check if user is allowed to delete the video
         $this->authorize('delete', $video);

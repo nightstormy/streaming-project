@@ -15,8 +15,8 @@ class VideoPolicy
      * @param Video $video
      * @return bool
      */
-    public function update(User $user, Video $video): bool
+    public function delete(User $user, Video $video): bool
     {
-        return $user->id === intVal($video->channel->user_id);
+        return intVal($user->id) === intVal($video->channel->user_id);
     }
 }
