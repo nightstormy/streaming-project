@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property mixed $user_id
+ * @property mixed $uid
+ * @property mixed $path
  */
 class Video extends Model
 {
