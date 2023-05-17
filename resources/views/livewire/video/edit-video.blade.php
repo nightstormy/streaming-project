@@ -1,4 +1,4 @@
-<div xmlns:wire="http://www.w3.org/1999/xhtml">
+<div xmlns:wire="http://www.w3.org/1999/xhtml" @if($video->processing_percentage < 100) wire:poll @endif>
 
 
     <div class="container">
