@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property mixed $uid
  * @property mixed $path
  * @property mixed $thumbnail_image
+ * @property mixed $channel
  */
 class Video extends Model
 {

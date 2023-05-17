@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Channel::class);
     }
+
+    public function owns(Video $video)
+    {
+        return intVal($this->id) === intVal($video->channel->user_id);
+    }
 }
